@@ -3,22 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SqlLiteXam.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+        <StackLayout Margin="20,35,20,20">
+            <Entry x:Name="nameEntry"
+               Placeholder="Enter name" />
+            <Entry x:Name="ageEntry"
+               Placeholder="Enter age" />
+            
+            <Button Text="Add to Database"
+                Clicked="Insert_Clicked" />
+
+            <Button Text="Delete from Database"
+                    Clicked="Delete_Clicked" />
+
+            <Button Text="Get Adult People via LINQ"
+                    Clicked="GetAdultPeoplecLINQ_Clicked" />
+
+        <Button Text="Get Adult People via QUERY"
+                    Clicked="GetAdultPeopleQuery_Clicked" />
+
+        <CollectionView x:Name="collectionView" SelectionMode="Single" SelectionChanged="collectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Name}"
+                               FontSize="Medium" />
+                            <Label Text="{Binding Age}"
+                               TextColor="Silver"
+                               FontSize="Small" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
 
 </ContentPage>
